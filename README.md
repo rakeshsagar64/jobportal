@@ -1,1 +1,1 @@
-this is a mean stack job portal
+this is a job portal buitl using mean stack
