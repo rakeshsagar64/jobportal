@@ -11,16 +11,6 @@ let RecruiterModel=function (recruiter) {
   this.accountCreatedDate=recruiter.accountCreatedDate
 }
 
-// let RecruiterModel=function (name,email,password,contactInfo,companyName,companyDescription,verified,accountCreatedDate) {
-//   this.name=name,
-//   this.email=email,
-//   this.password=password,
-//   this.contactInfo=contactInfo,
-//   this.companyName=companyName,
-//   this.companyDescription=companyDescription,
-//   this.verified=verified,
-//   this.accountCreatedDate=accountCreatedDate
-// }
 
 
-module.exports=RecruiterModel;
+module.exports.RecruiterModel=RecruiterModel;

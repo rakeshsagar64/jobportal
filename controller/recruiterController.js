@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
-const RecruiterModel = require('../models/recruiterModel');
-
+const RecruiterModel = require('../models/recruiterModel').RecruiterModel;
+const Validation = require('../services/validation');
+const Database = require('../services/database');
 
 
 let urlencoded=bodyParser.urlencoded({extends:false});
@@ -29,11 +30,23 @@ let recruiterController=function(app){
         verified:false,
         accountCreatedDate:new Date(),
       });
+      Validation.passwordVerifier(recruiterData,(err,encryptedPassword) => {
+        if(err) throw err;
+        recruiterData.password=encryptedPassword;
+        //correct output comes here
+        console.log(recruiterData);
+        //call the database insert method
+        let connection=
+        Database.save(recruiterData);
+      });
+      //the old output comes here due to async
       console.log(recruiterData);
+
+
       // TODO: import bcrypt
       // TODO: write password encrypt method using bcrypt
 
-      
+
   });
 
 
