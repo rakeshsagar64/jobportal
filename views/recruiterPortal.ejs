@@ -6,9 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
+
   <h1>This is the recruiter portal </h1>
-  <a href="recruiterLogin">Login</a>
-  <a href="recruiterRegister">Register</a>
+  <h3>Login</h3>
+
+  <form action="recruiterLogin" method="post">
+    <input type="email" name="email" required placeholder="email">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit"  value="Send">
+  </form>
+
+  <h3>Register</h3>
+    <form action="recruiterRegister" method="post">
+
+        <input type="text" name="name" placeholder="Enter the name"><br>
+        <input type="email" name="email" required placeholder="email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="text" name="contactInfo" placeholder="contact number"><br>
+        <input type="text" name="companyName" placeholder="companyName"><br>
+        <input type="text" name="companyDescription" placeholder="companyDescription">
+        <input type="submit"  value="Send">
+
+      </form>
+
+<a href="/">Candidate Portal</a>
+
+
+
 </body>
 </html>
