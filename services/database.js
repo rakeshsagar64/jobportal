@@ -38,7 +38,41 @@ const userSchema=mongoose.Schema({
 
 });
 
+const candidateSchema=mongoose.Schema({
+  name:{
+    type:String
+  },
+  email:{
+    type:String,
+    required:true
+  },
+  password:{
+    type:String,
+    required:true
+  },
+  contactInfo:{
+    type:String,
+    required:true
+  },
+  industry:{
+    type:String,
+    required:true
+
+  },
+  experience:{
+    type:String,
+    required:true
+  },
+  accountCreatedDate:{
+    type:String
+    }
+
+});
+
+
 
 let data= mongoose.model('recruiters',userSchema);
+let candidateData=mongoose.model('candidates',candidateSchema);
 
-module.exports=data;
+module.exports.candidateData=candidateData;
+module.exports.RecruiterData=data;

@@ -1,9 +1,7 @@
 const bodyParser = require('body-parser');
 const RecruiterModel = require('../models/recruiterModel').RecruiterModel;
 const Validation = require('../services/validation');
-const Database = require('../services/database');
-console.log("----------database---------");
-console.log(Database);
+const Database = require('../services/database').RecruiterData;
 
 let urlencoded=bodyParser.urlencoded({extends:false});
 
@@ -35,9 +33,14 @@ let recruiterController=function(app){
       Validation.passwordVerifier(recruiterData,(err,encryptedPassword) => {
         if(err) throw err;
         recruiterData.password=encryptedPassword;
+
         //correct output comes here
         //call the database insert method
+        //convert your model object to mongoose model
+
         let data=new Database(recruiterData);
+        //save in mongodb
+
         let savedData=data.save(recruiterData,(err,recruiter) => {
           if (err) {
             response.json({success:false,msg:'failed to register the user'});
@@ -47,11 +50,9 @@ let recruiterController=function(app){
         });
 
       });
-      //the old output comes here due to async
 
 
-      // TODO: import bcrypt
-      // TODO: write password encrypt method using bcrypt
+
 
 
   });
