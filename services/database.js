@@ -39,4 +39,6 @@ const userSchema=mongoose.Schema({
 });
 
 
-module.exports=mongoose.model('recruiters',userSchema);
+let data= mongoose.model('recruiters',userSchema);
+
+module.exports=data;

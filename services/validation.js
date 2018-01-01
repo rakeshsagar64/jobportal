@@ -7,7 +7,7 @@ console.log("---------password verifier-----------");
 
     bcrypt.hash(data.password,salt,callback,(err,hash) => {
       data.password=hash;
-      console.log("-------------inside hash-----------");
+    
       callback(data);
     });
 

@@ -2,7 +2,8 @@ const bodyParser = require('body-parser');
 const RecruiterModel = require('../models/recruiterModel').RecruiterModel;
 const Validation = require('../services/validation');
 const Database = require('../services/database');
-
+console.log("----------database---------");
+console.log(Database);
 
 let urlencoded=bodyParser.urlencoded({extends:false});
 
@@ -30,17 +31,23 @@ let recruiterController=function(app){
         verified:false,
         accountCreatedDate:new Date(),
       });
+
       Validation.passwordVerifier(recruiterData,(err,encryptedPassword) => {
         if(err) throw err;
         recruiterData.password=encryptedPassword;
         //correct output comes here
-        console.log(recruiterData);
         //call the database insert method
-        let connection=
-        Database.save(recruiterData);
+        let data=new Database(recruiterData);
+        let savedData=data.save(recruiterData,(err,recruiter) => {
+          if (err) {
+            response.json({success:false,msg:'failed to register the user'});
+          } else {
+            response.json({success:true,msg:'registration successfull'});
+          }
+        });
+
       });
       //the old output comes here due to async
-      console.log(recruiterData);
 
 
       // TODO: import bcrypt
